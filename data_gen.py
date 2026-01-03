@@ -103,10 +103,10 @@ def make_samples(a,b):
 
 #create samples
 
-def make_batch(b, device, k=3):
+def make_batch(batch_size, device, k=3):
 
-    base = b // (k+1)
-    rem  = b % (k+1)
+    base = batch_size // (k+1)
+    rem  = batch_size % (k+1)
     counts = [base] * (k + 1)
 
     for i in range(rem):
@@ -138,10 +138,10 @@ def make_batch(b, device, k=3):
     attention_mask = torch.zeros((b, max_len), dtype=torch.long)
     labels = torch.full((b, max_len), -100, dtype=torch.long)
 
-    for i, (seq, plen) in enumerate(zip(seqs, prompt_lens)):
+    for idx, (seq, plen) in enumerate(zip(seqs, prompt_lens)):
         L = seq.numel()
-        input_ids[i, :L] = seq
-        attention_mask[i, :L] = 1
-        labels[i, plen:L] = seq[plen:L]
+        input_ids[idx, :L] = seq
+        attention_mask[idx, :L] = 1
+        labels[idx, plen:L] = seq[plen:L]
 
     return input_ids.to(device), attention_mask.to(device), labels.to(device)
