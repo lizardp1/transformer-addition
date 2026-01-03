@@ -26,7 +26,7 @@ wandb.init(
 )
 cfg = wandb.config
 
-max_seq_len = 24 #longest 9999 + 9999 = 19998\n
+max_seq_len = 25 #longest 9999 + 9999 = 19998\n
 
 model_config = GPT2Config(
     vocab_size=VOCAB_SIZE,

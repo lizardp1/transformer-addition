@@ -11,7 +11,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 def load_model(path, n_layer=6, n_head=8, n_embd=256):
     config = GPT2Config(
         vocab_size=VOCAB_SIZE,
-        n_positions=24,
+        n_positions=25,
         n_layer=n_layer,
         n_head=n_head,
         n_embd=n_embd,
@@ -40,7 +40,7 @@ def predict(model, a, b):
     return predicted, expected, predicted == expected
 
 
-def eval_in_distribution(model, k=3, num_samples=500):
+def eval_in_distribution(model, k=3, num_samples=1000):
     results = {c: {"correct": 0, "total": 0} for c in range(k + 1)}
     
     samples_per_carry = num_samples // (k + 1)
@@ -66,7 +66,7 @@ def eval_in_distribution(model, k=3, num_samples=500):
     }
 
 
-def eval_length_generalization(model, train_k=3, test_k_list=[4], num_samples=200):
+def eval_length_generalization(model, train_k=3, test_k_list=[4], num_samples=1000):
     results = {}
     
     for test_k in test_k_list:

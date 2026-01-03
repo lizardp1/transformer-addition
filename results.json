@@ -1,0 +1,22 @@
+{
+  "in_distribution": {
+    "overall_accuracy": 1.0,
+    "by_carry": {
+      "carry_0": 1.0,
+      "carry_1": 1.0,
+      "carry_2": 1.0,
+      "carry_3": 1.0
+    },
+    "num_samples": 1000
+  },
+  "length_generalization": {
+    "k=4": {
+      "accuracy": 0.0,
+      "num_samples": 1000
+    },
+    "k=5": {
+      "accuracy": 0.0,
+      "num_samples": 996
+    }
+  }
+}
