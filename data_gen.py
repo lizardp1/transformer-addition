@@ -114,9 +114,9 @@ def make_batch(batch_size, device, k=3):
 
     #generate numbers per carry bucket
     pairs = []
-    for d, n_d in enumerate(counts):
-        for _ in range(n_d):
-            a, b = pair_sampling(d, k=3)
+    for c, n_c in enumerate(counts): 
+        for _ in range(n_c):
+            a, b = pair_sampling(c, k=k)
             pairs.append((a, b))
     random.shuffle(pairs)
 
