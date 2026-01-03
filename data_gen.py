@@ -134,9 +134,9 @@ def make_batch(batch_size, device, k=3):
 
     #padding and masking
     max_len = max(seq.numel() for seq in seqs)
-    input_ids = torch.full((b, max_len), EOS_ID, dtype=torch.long)
-    attention_mask = torch.zeros((b, max_len), dtype=torch.long)
-    labels = torch.full((b, max_len), -100, dtype=torch.long)
+    input_ids = torch.full((batch_size, max_len), EOS_ID, dtype=torch.long)
+    attention_mask = torch.zeros((batch_size, max_len), dtype=torch.long)
+    labels = torch.full((batch_size, max_len), -100, dtype=torch.long)
 
     for idx, (seq, plen) in enumerate(zip(seqs, prompt_lens)):
         L = seq.numel()
